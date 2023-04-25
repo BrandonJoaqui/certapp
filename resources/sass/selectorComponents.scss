@@ -1,0 +1,43 @@
+
+.tercero-selector,
+.competencia-selector,
+.equipo-selector
+{
+
+    input[type="text"]{
+        padding: 3px;
+    }
+
+    .autocomplete-box{
+        z-index: 10000;
+        border-radius: 2px 2px 4px 4px;
+        overflow: hidden;
+        background: rgb(248, 250, 255);
+        border: 1px #e1e1e1 solid;
+
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none;
+        
+        ul{
+            margin: 0;
+            padding: 0;
+            display: block;
+            width: max-content;
+
+            li{
+                cursor: pointer;
+                padding: 5px 3px;
+                width: auto;
+            }
+            
+            li:hover{
+                color:white;
+                background-color: rgb(50, 59, 68);
+            }
+        }
+    }
+}

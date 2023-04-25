@@ -1,0 +1,70 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
+@import 'selectorComponents.scss';
+@import 'consultaPublica.scss';
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main-app-menu{
+    position: fixed;
+    top:61px;
+    padding-top: 20px;
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 61px);
+    background: rgb(18,27,42);
+    background: linear-gradient(rgb(0 51 113) 0%, rgb(14 34 67) 56%, rgb(9 38 62) 100%);
+    a{
+        color: white;
+        background-color: rgba(53, 53, 53, 0);
+        text-decoration: none;
+        display: block;
+        padding: 7px 15px 7px 23px;
+        transition: all ease 0.4s;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    a:hover{
+        background-color: rgba(43, 50, 96, 0.506);
+    }
+
+}
+
+.main-container{
+    position: absolute;
+    width:calc(100% - 200px);
+    left: 200px;
+    top: 61px;
+    height: calc(100vh - 61px);
+    overflow: auto;
+}
+
+.card{
+    border-radius: 0;
+}
+
+.vueforms-mediafile-input{
+    img{
+        width: 100px;
+    }
+}
+
+.adminapp-navbar{
+    z-index: 200;
+}
+
+.adminapp-brand{
+    img{
+        height: 35px;
+    }
+}
+
+#main-app .card-header{
+    text-align: center;
+    font-weight: 700;
+}
