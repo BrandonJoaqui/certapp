@@ -39,6 +39,11 @@
                                             class="mt-1 btn btn-sm btn-info d-block" 
                                         >Carné</a>
                                         <a 
+                                            target="_blank" 
+                                            href="/generar_diploma/{{$certificado->id}}" 
+                                            class="mt-1 btn btn-sm btn-info d-block" 
+                                        >Diploma</a>
+                                        <a 
                                             target="_blank"
                                             href="/consulta_certificados/?tipo_de_consulta=consecutivo&consecutivo={{$certificado->consecutivo}}" 
                                             class="mt-1 btn btn-sm btn-info d-block" 

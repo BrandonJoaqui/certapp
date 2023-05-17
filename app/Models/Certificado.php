@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Certificado extends Model
 {
@@ -20,6 +21,8 @@ class Certificado extends Model
         "activo", 
         "fecha_inicio",
         "fecha_fin",
+        "intensidad_horaria",
+        "permitir_descarga_publica_diploma",
     ];
 
     // ACTIVO - INACTIVO - SUSPENDIDO - EN PROCESO DE CERTIFICACIÓN
@@ -101,6 +104,13 @@ class Certificado extends Model
             $EquipoPlacaSerie;
         }
         return "unknown";
+    }
+
+    public function obtenerFechaInicioCertificadoFormateada(){
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        $fecha = Carbon::parse($this->fecha_inicio);
+        $mes = $meses[($fecha->format('n')) - 1];
+        return $fecha->format('d') . ' de ' . $mes . ' de ' . $fecha->format('Y');
     }
 
     public function save(array $options = array()){

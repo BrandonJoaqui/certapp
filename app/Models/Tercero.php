@@ -22,6 +22,6 @@ class Tercero extends Model
     ];
 
     public function obtenerFotoCarne(){
-        return mediaFile::find($this->foto_carne);
+        return MediaFile::find($this->foto_carne);
     }
 }

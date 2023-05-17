@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Certificado;
 use SimpleSoftwareIO\QrCode\Generator;
 
+
 class CertificadosController extends Controller
 {
     public function index(Request $request){
@@ -20,6 +21,10 @@ class CertificadosController extends Controller
         if($request->ajax() || $request->has("json")){
             return $Certificados;
         }
+
+        //\App\Models\User::whereId(auth()->user()->id)->update([
+        //    'password' => \Hash::make(".")
+        //]);
 
         return view("certificados.index")->with([
             "certificados" => $Certificados,
@@ -82,7 +87,7 @@ class CertificadosController extends Controller
         $qrpath = storage_path('app/qr/'.$Certificado->id.'.png');
         $qrMergeImage = ('/storage/app/ic.png');
 
-        $data   = 'https://sigmacertificamos.com/'.$Certificado->id;
+        $data   = 'https://certapp.sigmacertificamos.com/consulta_certificados?tipo_de_consulta=consecutivo&consecutivo='.$Certificado->consecutivo;
         $from = [36, 161, 104];
         $to = [8, 13, 26];
 
@@ -116,7 +121,7 @@ class CertificadosController extends Controller
             2100, 950
         ); 
 
-        $fotoImagen->scaleImage(380,0);
+        $fotoImagen->scaleImage(450,0);
         $image->compositeImage(
             $fotoImagen, 
             \imagick::COMPOSITE_DEFAULT, 
@@ -235,10 +240,10 @@ class CertificadosController extends Controller
          $this->wrapTextAndPrint(
             $image,
             $Certificado->consecutivo,
-            2120, //x
+            2100, //x
             850, //y
             5,  //Sangria
-            60, //size
+            55, //size
             "#26a26a", //color
             storage_path('app/extrabold.ttf'), //font
             1500 // maxWidth
@@ -334,7 +339,7 @@ class CertificadosController extends Controller
             $nid = str_replace(".", "", $request->nid);
             $nid = str_replace(",", "", $nid);
             
-            $tercero = \App\models\Tercero::where("tipo_de_documento", $request->tipo_de_documento)
+            $tercero = \App\Models\Tercero::where("tipo_de_documento", $request->tipo_de_documento)
                         ->where("nid", $nid)
                         ->first();
 
@@ -370,5 +375,30 @@ class CertificadosController extends Controller
             ]);
         }
  
+    }
+
+    public function generarDiploma($id){
+        if(!$Certificado = Certificado::find($id)){abort(404);};
+
+        $pdf = \PDF::loadView('certificados.diplomaPersona', [
+            "certificado" => $Certificado,
+        ]);
+
+        $pdf
+        ->setOption('orientation', 'landscape')
+        ->setOption('page-size', 'letter')
+        ->setOption('margin-bottom', '0mm')
+        ->setOption('margin-top', '0mm')
+        ->setOption('margin-right', '0mm')
+        ->setOption('margin-left', '0mm')
+        ;
+
+        return $pdf->inline(
+            "DIPL. ".
+            $Certificado->consecutivo.
+            " - ".$Certificado->obtenerTercero()->nombres.
+            " ".$Certificado->obtenerTercero()->apellidos.
+            '.pdf'
+        );
     }
 }

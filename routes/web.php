@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return redirect("/home"); });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false, 'reset' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -20,4 +20,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/media_files', App\Http\Controllers\MediaFileController::class);
 
     Route::get('/generar_carne/{certificadoID}', [App\Http\Controllers\CertificadosController::class, 'generarCarne']);
+    
+    
 });
+
+/* No need Auth */
+Route::get('/generar_diploma/{certificadoID}', [App\Http\Controllers\CertificadosController::class, 'generarDiploma']);

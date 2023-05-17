@@ -64,7 +64,7 @@
                 @endisset
             ></input-text>
             <input-text
-            class="mt-3"
+                class="mt-3"
                 caption_text="Capacidad"
                 placeholder_text="Ingrese capacidad"
                 required="false"
@@ -73,6 +73,16 @@
                 current_value="{{$certificado->capacidad}}"
                 @endisset
             ></input-text>
+            <input-number
+                class="mt-3"
+                caption_text="Intensidad horaria"
+                placeholder_text="Ingrese intensidad horaria si aplica"
+                required="false"
+                input_name="intensidad_horaria"
+                @isset($certificado)
+                current_value="{{$certificado->intensidad_horaria}}"
+                @endisset
+            ></input-number>
             
             <input-date
                 class="mt-3"
@@ -100,6 +110,16 @@
                 input_name="activo"
                 @isset($certificado)
                     current_value="{{$certificado->activo}}"
+                @endisset
+                required="required"
+            ></input-checkbox>
+
+            <input-checkbox
+                class="mt-3"
+                caption_text="¿Puede el usuario descargar diploma en consulta pública?"
+                input_name="permitir_descarga_publica_diploma"
+                @isset($certificado)
+                    current_value="{{$certificado->permitir_descarga_publica_diploma}}"
                 @endisset
                 required="required"
             ></input-checkbox>

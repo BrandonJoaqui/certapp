@@ -15,7 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="{{ asset('js/app.js') }}?dt={{filemtime(base_path('public/js/app.js'))}}" defer></script>
+    <link href="{{ asset('css/app.css') }}?dt={{filemtime(base_path('public/css/app.css'))}}" rel="stylesheet">
 </head>
 <body>
     <div>

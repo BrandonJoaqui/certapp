@@ -30,6 +30,7 @@ import indexTableSimpleSearchbar from './components/indexTable/simpleSearchbar.v
 import indexTableActionButtons from './components/indexTable/actionButtons.vue';
 /* IMPORTS Forms components */
 import vueformsTextInput from './components/formularios/vueformsTextInput.vue';
+import vueformsNumberInput from './components/formularios/vueformsNumberInput.vue';
 import vueformsSelectorInput from './components/formularios/vueformsSelectorInput.vue';
 import vueformsDateInput from './components/formularios/vueformsDateInput.vue';
 import vueformsCheckboxInput from './components/formularios/vueformsCheckboxInput.vue';
@@ -47,6 +48,7 @@ appMainContent.component('simple-searchbar', indexTableSimpleSearchbar);
 appMainContent.component('action-btns', indexTableActionButtons);
 /* Forms components*/
 appMainContent.component('input-text', vueformsTextInput);
+appMainContent.component('input-number', vueformsNumberInput);
 appMainContent.component('input-selector', vueformsSelectorInput);
 appMainContent.component('input-date', vueformsDateInput);
 appMainContent.component('input-checkbox', vueformsCheckboxInput);

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Tercero;
+use App\Models\Tercero;
 
 class TercerosController extends Controller
 {
@@ -47,8 +47,9 @@ class TercerosController extends Controller
         $tercero = new Tercero();
         $tercero->fill($request->all());
 
-        try {
+        
             $tercero->save();
+            try {
         } catch (\Throwable $th) {
             //echo $th;
             abort(403, "No se puede crear el recurso, error no especificado");
